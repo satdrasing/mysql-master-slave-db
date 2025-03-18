@@ -21,6 +21,7 @@ vim  /etc/mysql/my.cnf
 [mysqld]
 server-id=1
 log-bin=mysql-bin
+mysql_native_password=ON
 
 docker container restart mysql-master
 
@@ -47,6 +48,7 @@ vim /etc/mysql/my.cnf
 [mysqld]
 server-id=2
 log-bin=mysql-bin
+mysql_native_password=ON
 
 docker container restart mysql-slave
 
