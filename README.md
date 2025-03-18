@@ -1,6 +1,7 @@
 https://javamana.com/2021/10/20211004065230987I.html
 https://stackoverflow.com/questions/68012475/how-to-do-database-routing-in-read-only-and-read-write-with-spring
 
+```
 ### Docker
 ```
 docker network create mysql-network
@@ -14,9 +15,13 @@ docker container run --name mysql-slave  --network mysql-network --privileged=tr
 ```
 docker container exec -it mysql-master /bin/bash
 
-vi /etc/mysql/my.cnf
+microdnf install -y vim
+vim  /etc/mysql/my.cnf
+
+[mysqld]
 server-id=1
 log-bin=mysql-bin
+
 docker container restart mysql-master
 
 docker container exec -it mysql-master /bin/bash
@@ -35,9 +40,14 @@ select host, user from mysql.user;
 ### Slave
 ```
 docker container exec -it mysql-slave /bin/bash
-vi /etc/mysql/my.cnf
+
+microdnf install -y vim
+vim /etc/mysql/my.cnf
+
+[mysqld]
 server-id=2
 log-bin=mysql-bin
+
 docker container restart mysql-slave
 
 docker container exec -it mysql-slave /bin/bash
